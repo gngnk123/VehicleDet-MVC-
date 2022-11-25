@@ -59,5 +59,26 @@ namespace DataLibrary.BusinessLogic
 
             return SqlDataAccess.SelectData<Vehiclemodel>(sql, data);
         }
+
+        public static List<Vehiclemodel> UpdateVehicle(int selid,int vehicleid, string vehicleBrand, string vehicleModel, int vehicleYear, int vehicleOdo,
+            string vehicleColor, int vehiclEengine)
+        {
+            Vehiclemodel data = new Vehiclemodel()
+            {
+                Id=selid,
+                CarId = vehicleid,
+                Make=vehicleBrand,
+                Model=vehicleModel,
+                Year=vehicleYear,
+                Odo=vehicleOdo,
+                Color=vehicleColor,
+                Engine=vehiclEengine
+            };
+            string sql = @"UPDATE dbo.Vehicle
+                           SET CarId = @CarId, Make = @Make, Model = @Model, Year = @Year, Odo = @Odo, Color = @Color, @Engine = Engine
+                           WHERE Id = @Id;";
+
+            return SqlDataAccess.SelectData<Vehiclemodel>(sql, data);
+        }
     }
 }

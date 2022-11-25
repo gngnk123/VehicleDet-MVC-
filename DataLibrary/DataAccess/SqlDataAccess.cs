@@ -50,5 +50,14 @@ namespace DataLibrary.DataAccess
                 return cnn.Query<T>(sql,data).ToList();
             }
         }
+
+        public static List<T> UpdateData<T>(string sql, T data)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+
+                return cnn.Query<T>(sql, data).ToList();
+            }
+        }
     }
 }
