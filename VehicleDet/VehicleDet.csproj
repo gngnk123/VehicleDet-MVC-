@@ -164,8 +164,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ViewVehicles.cshtml" />
-    <Content Include="Views\Home\CarDelete.cshtml" />
     <Content Include="Views\Home\CarAdd.cshtml" />
+    <Content Include="Views\Home\CarDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

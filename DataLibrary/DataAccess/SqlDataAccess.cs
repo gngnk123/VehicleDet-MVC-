@@ -41,5 +41,14 @@ namespace DataLibrary.DataAccess
                 return cnn.Execute(sql, data);
             } 
         }
+
+        public static List<T> SelectData<T>(string sql, T data)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+
+                return cnn.Query<T>(sql,data).ToList();
+            }
+        }
     }
 }

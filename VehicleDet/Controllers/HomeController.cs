@@ -76,30 +76,41 @@ namespace VehicleDet.Controllers
                     model.Odo,
                     model.Color,
                     model.Engine);
-                return RedirectToAction("index");
+                return RedirectToAction("ViewVehicles");
             }
             return View();
         }
 
-        public ActionResult CarDelete()
+        public ActionResult CarDelete(int Id)
         {
+            var data = SelectVehicle(Id);
+            Vehiclemodel vehicles = new Vehiclemodel();
 
-            return View();
+            foreach (var item in data)
+            {
+                vehicles.Id = item.Id;
+                vehicles.CarId = item.CarId;
+                vehicles.Make = item.Make;
+                vehicles.C_Model = item.Model;
+                vehicles.Year = item.Year;
+                vehicles.Odo = item.Odo;
+                vehicles.Color = item.Color;
+                vehicles.Engine = item.Engine;
+                
+            }
+            return View(vehicles);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CarDelete(int Id)
+        public ActionResult CarDelete(int Id, Vehiclemodel model)
         {
-            if (ModelState.IsValid)
-            {
+
                 var data = DeleteVehicle(
-                    Id);
+                    model.Id);
 
-                return RedirectToAction("ViewVehicles","../ViewVehicles");
-            }
+                return RedirectToAction("ViewVehicles");
 
-            return View();
         }
 
     }

@@ -48,5 +48,16 @@ namespace DataLibrary.BusinessLogic
             
             return SqlDataAccess.DeleteData(sql, data);
         }
+
+        public static List<Vehiclemodel> SelectVehicle(int selId)
+        {
+            Vehiclemodel data = new Vehiclemodel()
+            {
+                Id = selId
+            };
+            string sql = @"select * from dbo.Vehicle WHERE Id=@Id";
+
+            return SqlDataAccess.SelectData<Vehiclemodel>(sql, data);
+        }
     }
 }
