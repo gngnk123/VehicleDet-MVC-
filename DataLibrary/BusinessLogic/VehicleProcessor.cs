@@ -33,10 +33,19 @@ namespace DataLibrary.BusinessLogic
         public static List<Vehiclemodel> LoadVehicle()
         {
             string sql = @"select Id , CarId , Make , Model, Year, Odo, Color, Engine
-                            from dbo.Vehicle";
+                            from dbo.Vehicle where Deleted=0";
 
             return SqlDataAccess.LoadData<Vehiclemodel>(sql);
         }
+
+        public static List<Vehiclemodel> LoadDeletedVehicle()
+        {
+            string sql = @"select Id , CarId , Make , Model, Year, Odo, Color, Engine
+                            from dbo.Vehicle where Deleted=1";
+
+            return SqlDataAccess.LoadData<Vehiclemodel>(sql);
+        }
+
 
         public static int DeleteVehicle(int delId)
         {
@@ -44,10 +53,26 @@ namespace DataLibrary.BusinessLogic
             {
                 Id = delId
             };
-            string sql = @"DELETE FROM dbo.Vehicle WHERE Id=@Id";
+            string sql = @"UPDATE dbo.Vehicle
+                           SET Deleted=1
+                           WHERE Id = @Id;";
             
             return SqlDataAccess.DeleteData(sql, data);
         }
+
+        public static int RecoverVehicle(int delId)
+        {
+            Vehiclemodel data = new Vehiclemodel()
+            {
+                Id = delId
+            };
+            string sql = @"UPDATE dbo.Vehicle
+                           SET Deleted=0
+                           WHERE Id = @Id;";
+
+            return SqlDataAccess.DeleteData(sql, data);
+        }
+
 
         public static List<Vehiclemodel> SelectVehicle(int selId)
         {

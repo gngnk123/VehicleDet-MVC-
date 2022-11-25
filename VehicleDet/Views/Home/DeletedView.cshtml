@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<VehicleDet.Models.Vehiclemodel>
 
 @{
-    ViewBag.Title = "ViewVehicles";
+    ViewBag.Title = "DeletedView";
 }
 
-<h2>ViewVehicles</h2>
+<h2>DeletedView</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CarAdd")
-    @Html.ActionLink("Deleted Vehicles", "DeletedView")
+    @Html.ActionLink("Back to car list", "ViewVehicles")
 </p>
 <table class="table">
     <tr>
@@ -38,7 +37,6 @@
 
 @foreach (var item in Model) {
     <tr>
-
         <td>
             @Html.DisplayFor(modelItem => item.CarId)
         </td>
@@ -61,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Engine)
         </td>
         <td>
-            @Html.ActionLink("Edit", "CarUpdate", new {  id=item.Id  }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "CarDelete", new {  id= item.Id })
+            @Html.ActionLink("Edit", "CarUpdate", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Recover", "CarRecover", new { id=item.Id })
         </td>
     </tr>
 }

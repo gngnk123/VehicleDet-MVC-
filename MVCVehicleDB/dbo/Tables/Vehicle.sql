@@ -7,5 +7,6 @@
     [Year] INT NOT NULL, 
     [Odo] INT NOT NULL, 
     [Color] NVARCHAR(50) NOT NULL, 
-    [Engine] INT NOT NULL
+    [Engine] INT NOT NULL,
+    [Deleted] BIT NOT NULL DEFAULT 0
 )

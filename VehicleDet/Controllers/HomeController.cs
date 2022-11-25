@@ -143,5 +143,65 @@ namespace VehicleDet.Controllers
         }
 
 
+        public ActionResult DeletedView()
+        {
+            ViewBag.Message = "Vehicle List";
+
+            var data = LoadDeletedVehicle();
+            List<Vehiclemodel> vehicles = new List<Vehiclemodel>();
+
+            foreach (var row in data)
+            {
+                vehicles.Add(new Vehiclemodel
+                {
+                    Id = row.Id,
+                    CarId = row.CarId,
+                    Make = row.Make,
+                    C_Model = row.Model,
+                    Year = row.Year,
+                    Odo = row.Odo,
+                    Color = row.Color,
+                    Engine = row.Engine
+                });
+            }
+
+            return View(vehicles);
+        }
+
+        public ActionResult CarRecover(int Id)
+        {
+            var data = SelectVehicle(Id);
+            Vehiclemodel vehicles = new Vehiclemodel();
+
+            foreach (var item in data)
+            {
+                vehicles.Id = item.Id;
+                vehicles.CarId = item.CarId;
+                vehicles.Make = item.Make;
+                vehicles.C_Model = item.Model;
+                vehicles.Year = item.Year;
+                vehicles.Odo = item.Odo;
+                vehicles.Color = item.Color;
+                vehicles.Engine = item.Engine;
+
+            }
+            return View(vehicles);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CarRecover(int Id, Vehiclemodel model)
+        {
+
+            var data = RecoverVehicle(
+                model.Id);
+
+            return RedirectToAction("ViewVehicles");
+
+        }
+
+
+
+
     }
 }
