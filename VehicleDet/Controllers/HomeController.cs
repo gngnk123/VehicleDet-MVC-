@@ -13,6 +13,7 @@ namespace VehicleDet.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -35,10 +36,11 @@ namespace VehicleDet.Controllers
                     Year = row.Year,
                     Odo = row.Odo,
                     Color = row.Color,
-                    Engine = row.Engine
+                    Engine = row.Engine,
+                    
                 });
             }
-
+      
             return View(vehicles);
         }
 

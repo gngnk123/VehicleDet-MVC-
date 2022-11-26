@@ -34,5 +34,7 @@ namespace VehicleDet.Models
 
         [Display(Name = "Engine")]
         public int Engine { get; set; }
+
+        public int Count { get; set; }
     }
 }
