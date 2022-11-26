@@ -5,17 +5,17 @@
 }
 
 <h2>ViewVehicles</h2>
-
+  
 <p>
-    @Html.ActionLink("Create New", "CarAdd")
-    @Html.ActionLink("Deleted Vehicles", "DeletedView")
+    @Html.ActionLink("Create New", "CarAdd", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Deleted Vehicles", "DeletedView", null, new { @class = "btn btn-danger", @id = "DeletedViewBtn" })
 </p>
-<div>
+<div class="alert alert-primary" role="alert">
 
-    <p>Total : </p>@Model.Count()
+    <p>Total Vehicles : @Model.Count() </p>
 
 </div>
-    
+
 
 
 <table class="table">
