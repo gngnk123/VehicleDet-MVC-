@@ -17,7 +17,7 @@ namespace VehicleDet.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public ActionResult ViewVehicles()
         {
             ViewBag.Message = "Vehicle List";
@@ -44,7 +44,6 @@ namespace VehicleDet.Controllers
             return View(vehicles);
         }
 
-
         public ActionResult CarAdd()
         {
 
@@ -69,7 +68,7 @@ namespace VehicleDet.Controllers
             }
             return View();
         }
-
+        [HttpGet]
         public ActionResult CarDelete(int Id)
         {
             var data = SelectVehicle(Id);
@@ -90,7 +89,6 @@ namespace VehicleDet.Controllers
             return View(vehicles);
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CarDelete(int Id, Vehiclemodel model)
         {
@@ -101,7 +99,7 @@ namespace VehicleDet.Controllers
                 return RedirectToAction("ViewVehicles");
 
         }
-
+        [HttpGet]
         public ActionResult CarUpdate(int Id)
         {
             var data = SelectVehicle(Id);
@@ -122,7 +120,6 @@ namespace VehicleDet.Controllers
             return View(vehicles);
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CarUpdate(int Id, Vehiclemodel model)
         {
@@ -144,7 +141,7 @@ namespace VehicleDet.Controllers
 
         }
 
-
+        [HttpGet]
         public ActionResult DeletedView()
         {
             ViewBag.Message = "Vehicle List";
@@ -169,7 +166,7 @@ namespace VehicleDet.Controllers
 
             return View(vehicles);
         }
-
+        [HttpGet]
         public ActionResult CarRecover(int Id)
         {
             var data = SelectVehicle(Id);
@@ -190,7 +187,6 @@ namespace VehicleDet.Controllers
             return View(vehicles);
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CarRecover(int Id, Vehiclemodel model)
         {
